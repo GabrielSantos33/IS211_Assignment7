@@ -8,10 +8,10 @@
 import random
 
 
-# In[32]:
+# In[42]:
 
 
-"""Die class creates the die object and seeds to 0."""
+"""Die class creates the die object and seeds to 0"""
 class Die():
     def __init__(self):
         self.value = 0
@@ -21,10 +21,10 @@ class Die():
         self.value = random.randint(1,6)
 
 
-# In[33]:
+# In[43]:
 
 
-"""Main function instantiates 2 players, one die and one game objects."""
+"""Main function instantiates 2 players, one die and one game objects"""
 class Player():
     def __init__(self):
         self.turn = False
@@ -32,7 +32,8 @@ class Player():
         self.hold = False
         self.score = 0
 
-    """#Method allows player to enter r or h and then sets the corresponding player attribute.  Catches invalid entry."""
+    """Method Hold_or_Rol allows a player to enter r or h and then sets the corresponding player attribute and
+    Catches invalid entry"""
     def Hold_or_Roll(self):
         input = input('Enter "H" to HOLD or "R" to ROLL? ')
         input = input.lower()
@@ -49,10 +50,10 @@ class Player():
             self.Hold_or_Roll()
 
 
-# In[34]:
+# In[44]:
 
 
-"""Game class executes the game for exactly 2 players and keeps score for the round and the total game score."""
+"""Game class executes the game for exactly 2 players and keeps score for the round and the total game score"""
 class Game():
     def __init__(self, player1, player2, die):
         self.turn_score = 0
@@ -65,7 +66,7 @@ class Game():
         self.player2.name = "PLAYER 2"
 
 
-        """Selects a random player to start the game and then calls the turn method."""
+        """Selects a random player to start the game and then calls the turn method"""
         print("A RANDOM PLAYER WILL BE SELECTED")
         select_player = random.randint(1, 2)
         if select_player == 1:
@@ -79,10 +80,10 @@ class Game():
         self.turn()
 
 
-# In[35]:
+# In[45]:
 
 
-"""Method executes the 'turn' by rolling the die and adding scores or switching to next player if 1 is rolled."""
+"""Method executes the 'turn' by rolling the die and adding scores or switching to next player if 1 is rolled"""
 def turn(self):
     self.die.roll()  #Rolls the die.
 
@@ -111,10 +112,10 @@ def turn(self):
             self.turn()  #Calls this turn method to keep rolling.
 
 
-# In[36]:
+# In[46]:
 
 
-"""Method resets turned score, ends the game and switch between players if no one has scored 100 points"""
+"""Method score_card resets turned score, ends the game and switch between players if no one has scored 100 points"""
 def score_card(self):
     self.turn_score = 0
     if self.player1.score >= 100:
@@ -127,7 +128,7 @@ def score_card(self):
         print("Score:"), self.player2.score
         self.endgame()
 
-        """Switches between players if no winner and sets player as current player for the round."""
+        """Switches between players if no winner and sets player as current player for the round"""
     else:
         if self.current_player == self.player1:
             self.current_player = self.player2
@@ -138,18 +139,18 @@ def score_card(self):
         self.turn() 
 
 
-# In[37]:
+# In[47]:
 
 
-"""Method ends the game when a player has reached 100 points."""
+"""Method ends the game when a player has reached 100 points"""
 def endgame(self):
     sys.exit()
 
 
-# In[38]:
+# In[48]:
 
 
-"""Main function instantiates 2 players, 1 die and 1 game objects."""
+"""Main function instantiates 2 players, 1 die and 1 game objects"""
 def main():
     player1 = Player()
     player2 = Player()
